@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import shortid from "shortid";
 import SelectableList from "./NavigableList";
-import Button from './Button'
+import Button from "./Button";
 import "./styles.css";
 
 const generateList = (count = 0) =>
@@ -16,7 +16,7 @@ function App() {
   const handleOnChange = ({ target }) => {
     setFilter(target.value);
     setCursor(undefined);
-  }
+  };
 
   const handleKeyUp = ({ key, target }) => {
     if (key === "Enter" && target.value === filter) {
@@ -32,14 +32,12 @@ function App() {
         value={filter}
         autoFocus
       />
-      <SelectableList list={list} cursorIndex={cursor} >
+      <SelectableList list={list} cursorIndex={cursor}>
         {({ hasFocus, item, ...rest }) => (
           <Button
             style={{
-              background: hasFocus ? "hotpink" : "black",
-              color: "white",
-              padding: "10px",
-              borderRadius: "5px"
+              color: hasFocus ? "hotpink" : "black",
+              padding: "10px"
             }}
             {...rest}
           >
@@ -58,5 +56,6 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>, 
-  rootElement);
+  </React.StrictMode>,
+  rootElement
+);
